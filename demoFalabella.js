@@ -120,16 +120,8 @@ document.querySelector('#enviar').addEventListener('click', function (e) {
         console.log(tablaLlena.length)
     };
   
-    //return tablaLlena;
-    //completarTabla(controles, tamano, tablaLlena);
 });
 
-/*for (let index = 0; index < lists.length; index++) {
-    let mapeoLogin = lists[index].register.map(registers=>
-        {return ( dayjs(registers.login).format('DD/MM/YYYY'  ) )
-    
-    });
-*/
 
 
 
