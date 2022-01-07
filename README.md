@@ -1,4 +1,4 @@
-# datosDuroDemoFalabella
+# datosFijosArrayDemo
 
 Este repo contiene el mismo ejercicio abordado de dos formas:
 
