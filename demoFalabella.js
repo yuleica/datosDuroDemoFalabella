@@ -1,68 +1,80 @@
 let tablaLlena = [
     {
-        id_Contacto: 464033,
-        id_llamada: 55265783,
-        duracion: 26,
-        id_Venta: 0,
-        id_Ticket: 0,
-        rut: 0,
-        dv: 0,
-        telefonoGestionado: 0961382047,
-        base_de_datos: 9,
-        Resolucion: 'BuysDialer',
-        fecha_ts: '2022-01-03 15:29:20',
-        usuario: '',
-        comuna: '',
-        id_lote: 1769,
-        acepta: '',
-        marcaVenta: 69,
-        nombreEjecutivo: '',
-        id_ejecutivo: 0
+        fechaInicioLlamado: 'x',
+        fechaTerminoLlamado: 'x',	
+        usuario: 'x',
+        nombreEjecutivo: 'x',
+        idEjecutivo: 'x',
+        idCliente: 'x',
+        rutEjecutivo: 'x',	
+        dvEjecutivo: 'x',
+        celular: 'x',
+        baseGestion: 'frio',
+        producto: 'x',
+        cruceSeguros: 0,
+        tipoDeLlamado: 'ejecutivo',
+        contacto: 'Cotiza',
+        resultadoLlamado: 'x',
+        detalleLlamado: 'x',
+        comentarios: 'x'
+    },
+
+    {
+        fechaInicioLlamado: 'y',
+        fechaTerminoLlamado: 'y',	
+        usuario: 'y',
+        nombreEjecutivo: 'y',
+        idEjecutivo: 'y',
+        idCliente: 'y',
+        rutEjecutivo: 'y',	
+        dvEjecutivo: 'y',
+        celular: 'y',
+        baseGestion: 'caliente',
+        producto: 'y',
+        cruceSeguros: 1,
+        tipoDeLlamado: 'ejecutivo',
+        contacto: 'Lo pensara',
+        resultadoLlamado: 'y',
+        detalleLlamado: 'y',
+        comentarios: 'y'
+       
     },
     {
-        id_Contacto: 477740,
-        id_llamada: 55296486,
-        duracion: 31,
-        id_Venta: 0,
-        id_Ticket: 0,
-        rut: 0,
-        dv: 0,
-        telefonoGestionado: 0975555059,
-        base_de_datos: 9,
-        Resolucion: 'NoAnswerDialer',
-        fecha_ts: '2022-01-04 16:05:37',
-        usuario: '',
-        comuna: '',
-        id_lote: 2381,
-        acepta: '',
-        marcaVenta: 69,
-        nombreEjecutivo: '',
-        id_ejecutivo: 0
-    },
-    {
-        id_Contacto: 523744,
-        id_llamada: 55273314,
-        duracion: 36,
-        id_Venta: 0,
-        id_Ticket: 0,
-        rut: 0,
-        dv: 0,
-        telefonoGestionado: 0933496218,
-        base_de_datos: 9,
-        Resolucion: 'NoAnswerDialer',
-        fecha_ts: '2022-01-03 18:02:26',
-        usuario: '',
-        comuna: '',
-        id_lote: 2381,
-        acepta: '',
-        marcaVenta: 78,
-        nombreEjecutivo: '',
-        id_ejecutivo: 0
+        fechaInicioLlamado: 'z',
+        fechaTerminoLlamado: 'z',	
+        usuario: 'z',
+        nombreEjecutivo: 'z',
+        idEjecutivo: 'z',
+        idCliente: 'z',
+        rutEjecutivo: 'z',	
+        dvEjecutivo: 'z',
+        celular: 'z',
+        baseGestion: 'caliente',
+        producto: 'z',
+        cruceSeguros: 0,
+        tipoDeLlamado: 'bot',
+        contacto: 'BuysDialer',
+        resultadoLlamado: 'z',
+        detalleLlamado: 'z',
+        comentarios: 'z'
     }
 
 ];
 
-const opcionesTelefonoGestionado = ['BuysDialer', 'NoAnswerDialer', 'CongestionDialer', 'AnswerAnsweringMachineDialer', 'AnswerQueueDialer', 'NoAnswerDialer' ]
+const basetipollamadodiscador = ['BuysDialer', 
+                                    'NoAnswerDialer', 
+                                    'CongestionDialer', 
+                                    'AnswerAnsweringMachineDialer', 'AnswerQueueDialer', 'NoAnswerDialer' ];
+//const baseid_cliente = 
+const basetipollamado = ['ejecutivo', 'discador', 'bot'];
+const basecontactoejecutivo = ['Cotiza','Lo pensara','Venta en línea /web/app',
+            'Venta sucursal/call interno', 'Seguimiento','No Califica','Rechazo Cliente', 
+            'Atendido por otro ejecutivo','Ya lo contrato','Solicita nuevo llamado',
+            'Venta/ descarga fallida','Flujo arrojo error', 'Otros', 'Volver a llamar', 'No contesta', 
+            'Contesta tercero', 'N° equivocado', 'fuera de servicio', 'cliente inubicable', 'Buzon de Voz',
+            'Fallecido', 'otros'];
+const basebasedegestion = ['frio', 'caliente'];
+const basecruceseguros = [0,1];
 
 let controles = {
     minimoRegistro: 0,
@@ -87,40 +99,51 @@ console.log(controles.maximoRegistro)
 document.querySelector('#enviar').addEventListener('click', function (e) {
 
     e.preventDefault();
+    let ibase, illamado = 0;
+    let vcontacto = '';
 
     if (tamano < controles.minimoRegistro ){
 
         for ( index = tamano+1; index < controles.maximoRegistro; index++) {
 
-            let n = Math.round(Math.random() * (80))
+            //let n = Math.round(Math.random() * (80))
+
+            illamado = illamado < basetipollamado.length ? tipoDeLlamado = illamado = illamado + 2 : illamado = 0;
+
+            if (basetipollamado[illamado] === 'ejecutivo' && ibase < basecontactoejecutivo.length) {
+                vcontacto = basecontactoejecutivo[ibase]}
+            else {ibase = 0}
+
+            if (basetipollamado[illamado] === 'discador' && ibase < basetipollamadodiscador.length) {
+                vcontacto = basetipollamadodiscador[ibase]}
+            else {ibase = 0}
             
-            tablaLlena.push({
-                
-                    id_Contacto: 999999,
-                    id_llamada: 1,
-                    duracion: 1,
-                    id_Venta: 1,
-                    id_Ticket: 1,
-                    rut: 1,
-                    dv: 1,
-                    telefonoGestionado: 1,
-                    base_de_datos: 2,
-                    Resolucion: 'queue',
-                    fecha_ts: new Date(),
-                    usuario: 'xxxxx',
-                    comuna: 'xxxxx',
-                    id_lote: 1,
-                    acepta: 'xxxxxx',
-                    marcaVenta: 69,
-                    nombreEjecutivo: 'xxxxxxx',
-                    id_ejecutivo: n
+            tablaLlena.push({    
+                    fechaInicioLlamado: 'zzzzz',
+                    fechaTerminoLlamado: 'zzzzz',	
+                    usuario: 'zzzzzzz',
+                    nombreEjecutivo: 'zzzzzzz',
+                    idEjecutivo: 'zzzzzz',
+                    idCliente: 'zzzzzzz',
+                    rutEjecutivo: 'zzzzzz',	
+                    dvEjecutivo: 'zzzzz',
+                    celular: 'zzzzz',
+                    baseGestion: 'frio',
+                    producto: 'AV/SAV',
+                    cruceSeguros: 0,
+                    tipoDeLlamado: basetipollamado[illamado],
+                    contacto: vcontacto,
+                    resultadoLlamado: 'zzzzz',
+                    detalleLlamado: 'zzzzzz',
+                    comentarios: 'zzzzzz'
             })
-            console.log(tablaLlena)
-        };
-        console.log(tablaLlena.length)
+            console.log(tablaLlena);
+        }
+        console.log(tablaLlena.length);
     };
   
 });
+
 
 
 
