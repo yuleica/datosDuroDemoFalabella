@@ -108,16 +108,24 @@ document.querySelector('#enviar').addEventListener('click', function (e) {
 
             //let n = Math.round(Math.random() * (80))
 
-            illamado = illamado < basetipollamado.length ? tipoDeLlamado = illamado = illamado + 2 : illamado = 0;
+            illamado <= basetipollamado.length ? tipoDeLlamado = illamado + 1 : illamado = 0;
 
-            if (basetipollamado[illamado] === 'ejecutivo' && ibase < basecontactoejecutivo.length) {
+            console.log(illamado);
+
+            if (basetipollamado[illamado] === 'ejecutivo' && ibase <= basecontactoejecutivo.length) {
                 vcontacto = basecontactoejecutivo[ibase]}
-            else {ibase = 0}
+            else {vcontacto = basetipollamadodiscador[0]}
+      
 
-            if (basetipollamado[illamado] === 'discador' && ibase < basetipollamadodiscador.length) {
+            if (basetipollamado[illamado] === 'discador' && ibase <= basecontactoejecutivo.length) {
+                vcontacto = basetipollamadodiscado[ibase]}
+            else {vcontacto = basetipollamadodiscador[0]}
+    
+
+            if (basetipollamado[illamado] === 'bot' && ibase <= basetipollamadodiscador.length) {
                 vcontacto = basetipollamadodiscador[ibase]}
-            else {ibase = 0}
-            
+            else {vcontacto = basetipollamadodiscador[0]}
+
             tablaLlena.push({    
                     fechaInicioLlamado: 'zzzzz',
                     fechaTerminoLlamado: 'zzzzz',	
@@ -133,13 +141,14 @@ document.querySelector('#enviar').addEventListener('click', function (e) {
                     cruceSeguros: 0,
                     tipoDeLlamado: basetipollamado[illamado],
                     contacto: vcontacto,
-                    resultadoLlamado: 'zzzzz',
+                    resultadoLlamado: 'zzzzzzz',
                     detalleLlamado: 'zzzzzz',
                     comentarios: 'zzzzzz'
             })
-            console.log(tablaLlena);
+            
         }
-        console.log(tablaLlena.length);
+
+        console.log(tablaLlena);
     };
   
 });
